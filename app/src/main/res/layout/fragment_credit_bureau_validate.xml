@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.CreditBureauValidateFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.CreditBureauValidateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_100">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_financial_information"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layHeader">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <include
+                    android:id="@+id/vw_register_header"
+                    layout="@layout/header_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-47dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:stepNumber="@{@string/tv_step_three}"
+                    app:stringId="@{R.string.tv_step_4_validation_message}"
+                    app:text="@{@string/tv_register}" />
+
+                <TextView
+                    android:id="@+id/tv_warning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="@string/tv_step_4_wrong_information_warning"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vw_register_header" />
+
+                <TextView
+                    android:id="@+id/tv_automotive_credit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/tv_automotive_credit_validate"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_automotive_credit_option"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_warning" />
+
+                <TextView
+                    android:id="@+id/tv_automotive_credit_option"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/vw_shape_circular"
+                    android:gravity="center"
+                    android:text="@{ viewModel.automotiveCredit }"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_automotive_credit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_automotive_credit"
+                    tools:text="@string/tv_yes" />
+
+                <TextView
+                    android:id="@+id/tv_mortgage_loan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/tv_mortgage_loan_validate"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toStartOf="@id/tv_mortgage_loan_option"
+                    app:layout_constraintStart_toStartOf="@id/tv_automotive_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_automotive_credit" />
+
+                <TextView
+                    android:id="@+id/tv_mortgage_loan_option"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/vw_shape_circular"
+                    android:gravity="center"
+                    android:text="@{ viewModel.mortgageCredit }"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_mortgage_loan"
+                    app:layout_constraintEnd_toEndOf="@id/tv_automotive_credit_option"
+                    app:layout_constraintTop_toTopOf="@id/tv_mortgage_loan"
+                    tools:text="@string/tv_yes" />
+
+                <TextView
+                    android:id="@+id/tv_credit_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/tv_credit_card_validate"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toStartOf="@id/tv_credit_card_option"
+                    app:layout_constraintStart_toStartOf="@id/tv_automotive_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mortgage_loan" />
+
+                <TextView
+                    android:id="@+id/tv_credit_card_option"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/vw_shape_circular"
+                    android:gravity="center"
+                    android:text="@{ viewModel.creditCard }"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_credit_card"
+                    app:layout_constraintEnd_toEndOf="@id/tv_automotive_credit_option"
+                    app:layout_constraintTop_toTopOf="@id/tv_credit_card"
+                    tools:text="@string/tv_yes" />
+
+                <Button
+                    android:id="@+id/bn_yes"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onNextClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_yes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toStartOf="@+id/bn_no"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_credit_card"
+                    app:parallelogramBackground="@{R.color.green_300}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <Button
+                    android:id="@+id/bn_no"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onBackClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_no"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bn_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_credit_card"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

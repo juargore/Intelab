@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/init"
+            android:title="@string/menu_item_init" />
+
+        <item
+            android:id="@+id/edit_profile"
+            android:title="@string/menu_item_edit_profile" />
+
+        <item
+            android:id="@+id/delete_account"
+            android:title="@string/menu_item_delete_account" />
+
+        <item
+            android:id="@+id/logout"
+            android:title="@string/menu_item_close_session" />
+    </group>
+
+</menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="deleteAction"
+            type="Function1&lt;Integer, Unit>" />
+
+        <variable
+            name="editAction"
+            type="Function1&lt;Integer, Unit>" />
+
+        <variable
+            name="item"
+            type="com.intelab.joblab.presentation.ui.home.register.adapter.items.PreviousJobItem" />
+    </data>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_company"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.company}"
+                android:textColor="@color/black_800"
+                android:textStyle="bold"
+                tools:text="Empresa" />
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.jobName}"
+                android:textColor="@color/black_800"
+                tools:text="Puesto" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_job_start_end"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:maxLines="2"
+            android:text="@{Html.fromHtml(@string/previous_job_start_end(item.jobStart, item.jobEnd))}"
+            android:textColor="@color/black_800"
+            tools:text="Desde 07/2013 hasta 07/2019" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@null"
+            android:onClick="@{() -> editAction.invoke(item.id)}"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@null"
+            android:onClick="@{() -> deleteAction.invoke(item.id)}"
+            android:src="@drawable/ic_baseline_delete_24" />
+    </TableRow>
+
+</layout>

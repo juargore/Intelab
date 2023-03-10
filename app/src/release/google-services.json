@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "850724683357",
+    "project_id": "joblab-87196",
+    "storage_bucket": "joblab-87196.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850724683357:android:ad8b8cf044c44e265757b4",
+        "android_client_info": {
+          "package_name": "com.intelab.joblab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850724683357-tvd0hu305ktucvqbjlrc1ugdeakqu8ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAv1cwT9f56S8E5oF7x0hcmwTACWcOWYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850724683357-tvd0hu305ktucvqbjlrc1ugdeakqu8ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "850724683357-ec9r2cqqe1ce3v03tbvnvt7h6ocmr7ha.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.campussola.joblab"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.LifeStyleFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.LifeStyleViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_life_style"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layHeader">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <include
+                    android:id="@+id/header_progress_registration"
+                    layout="@layout/header_progress_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:advance="@{ viewModel.advance }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_casa"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_house"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header_progress_registration"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_housing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:choices="@{viewModel.housings}"
+                    app:currentPosition="@={viewModel.housingPosition}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_casa"
+                    app:layout_constraintTop_toBottomOf="@id/tv_casa" />
+
+                <TextView
+                    android:id="@+id/tv_relatives_number"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/gray_600"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_relatives_number"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_casa"
+                    app:layout_constraintTop_toBottomOf="@id/rv_housing"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <com.intelab.joblab.presentation.ui.views.CustomSpinner
+                    android:id="@+id/sp_relatives_number"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:background="@color/gray_100"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:textAllCaps="false"
+                    app:entries="@{viewModel.peopleAtHome}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/tv_relatives_number"
+                    app:layout_constraintTop_toBottomOf="@id/tv_relatives_number"
+                    app:selectedValue="@={viewModel.selectedPeopleAtHome}"
+                    app:trapezeBackground="@{R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_pets"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_600"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_pets"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_casa"
+                    app:layout_constraintTop_toBottomOf="@id/sp_relatives_number"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_yes"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onPetYesClicked()}"
+                    android:text="@string/tv_yes"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_pets"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pets"
+                    app:parallelogramBackground="@{viewModel.selectedPet == 1 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_no"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onPetNoClicked()}"
+                    android:text="@string/tv_no"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pets"
+                    app:parallelogramBackground="@{viewModel.selectedPet == 2 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_600"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_phones_number"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_casa"
+                    app:layout_constraintTop_toBottomOf="@id/tv_yes"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <com.intelab.joblab.presentation.ui.views.CustomSpinner
+                    android:id="@+id/sp_cars_number"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:background="@color/gray_100"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:textAllCaps="false"
+                    app:entries="@{viewModel.ownCars}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_phone_number"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
+                    app:selectedValue="@={viewModel.selectedOwnCars}"
+                    app:trapezeBackground="@{R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <Button
+                    android:id="@+id/bn_back"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="44dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onBackClicked() }"
+                    android:padding="1dp"
+                    android:text="@string/bn_back"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toStartOf="@+id/bn_next"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sp_cars_number"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <Button
+                    android:id="@+id/bn_next"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="44dp"
+                    android:background="@{viewModel.nextBnEnabled ? R.color.green_300 : R.color.gray_300}"
+                    android:enabled="@{viewModel.nextBnEnabled}"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onNextClicked() }"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_next"
+                    android:textAllCaps="false"
+                    android:textColor="@{viewModel.nextBnEnabled ? R.color.gray_800 : R.color.gray_500}"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bn_back"
+                    app:layout_constraintTop_toBottomOf="@id/sp_cars_number"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

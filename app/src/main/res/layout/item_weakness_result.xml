@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.intelab.joblab.domain.entities.AccutestResult" />
+
+        <variable
+            name="showArrow"
+            type="Boolean" />
+
+        <import type="kotlin.jvm.functions.Function3" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="action"
+            type="Function3&lt;View, View, View, Unit>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="@{item.item}"
+            app:layout_constraintEnd_toStartOf="@id/iv_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Integridad para resistir intentos de extorsión o soborno" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@null"
+            android:onClick="@{() -> action.invoke(ivArrow, tvDetailDescription ,rvWeaknessDetail)}"
+            android:src="@drawable/ic_arrow_down"
+            android:visibility="@{showArrow ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_description" />
+
+        <com.intelab.joblab.presentation.ui.views.ProgressView
+            android:id="@+id/pv_skill"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            app:value="@{item.percentage}"
+            tools:value="50" />
+
+        <TextView
+            android:id="@+id/tv_detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text='@{String.format(@string/tv_weaknesses_detail_title_format, item.details.description) ?? ""}'
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pv_skill"
+            tools:text="Flexibiliza tu tipo de liderazgo, con el fin de generar responsabilidades individuales." />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_weakness_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            app:details="@{item.details.values}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

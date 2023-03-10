@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.RegisterConfirmationFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.RegisterConfirmationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_100">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bn_check_out"
+                android:textAllCaps="true"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layHeader">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp">
+
+                <include
+                    android:id="@+id/vw_register_header"
+                    layout="@layout/header_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-47dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:stepNumber="@{@string/tv_empty}"
+                    app:stringId="@{R.string.tv_register_confirmation}"
+                    app:text="@{@string/tv_register}" />
+
+                <TextView
+                    android:id="@+id/tv_warning"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="@string/tv_wrong_information_warning"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vw_register_header" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_confirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginTop="16dp"
+                    app:confirmationItems="@{true}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/tv_warning" />
+
+                <Button
+                    android:id="@+id/bn_review"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onReviewClicked() }"
+                    android:padding="1dp"
+                    android:text="@string/bn_check_out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/bn_yes"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_confirmation"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <Button
+                    android:id="@+id/bn_yes"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onYesClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/bn_register_done"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bn_review"
+                    app:layout_constraintTop_toBottomOf="@id/rv_confirmation"
+                    app:parallelogramBackground="@{R.color.green_300}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.intelab.joblab.test",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 24,
+      "versionName": "1.0.24",
+      "outputFile": "client(debug)_05-09-2022_15-23.apk"
+    }
+  ],
+  "elementType": "File"
+}

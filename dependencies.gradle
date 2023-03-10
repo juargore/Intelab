@@ -1,0 +1,69 @@
+ext {
+    jvm_target = "1.8"
+    minSdkVersion = 24
+    targetSdkVersion = 31
+    compileSdkVersion = 31
+    buildToolsVersion = "30.0.2"
+
+
+    /** Android navigation **/
+    androidNavFragment          = "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    androidNavUI                = "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    /** Android lifecycle **/
+    androidLifecycleViewModel   = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    androidLifecycleRuntime     = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    /** AndroidX **/
+    androidAppCompat            = "androidx.core:core-ktx:$core_ktx_version"
+    androidCore                 = "androidx.appcompat:appcompat:$appcompat_version"
+    androidAnnotation           = "androidx.constraintlayout:constraintlayout:$constraint_version"
+    androidConstraintLayout     = "androidx.legacy:legacy-support-v4:$legacy_version"
+    androidLifecycleExtension   = "androidx.hilt:hilt-navigation-fragment:$hilt_navigation_version"
+    androidMaterial             = "com.google.android.material:material:$material_version"
+    flexbox                     = "com.google.android.flexbox:flexbox:$flexbox_version"
+    viewpager2                  = "androidx.viewpager2:viewpager2:$viewPagerVersion"
+
+    /** Retrofit **/
+    retrofit                    = "com.squareup.retrofit2:retrofit:$retrofit_version"
+    retrofitGson                = "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    retrofitInterceptor         = "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+
+    /** Dagger Hilt **/
+    daggerHilt                  = "com.google.dagger:hilt-android:$hilt_version"
+    daggerHiltKapt              = "com.google.dagger:hilt-compiler:$hilt_compiler_version"
+
+    /** Internal DB Room */
+    roomRuntime                 = "androidx.room:room-runtime:$room_version"
+    roomKapt                    = "androidx.room:room-compiler:$room_version"
+    roomKtx                     = "androidx.room:room-ktx:$room_version"
+    roomRxJava                  = "androidx.room:room-rxjava2:$room_version"
+
+    /**CameraX*/
+    cameraCore                  = "androidx.camera:camera-core:$camerax_version"
+    camera                      = "androidx.camera:camera-camera2:$camerax_version"
+    cameraLifecycle             = "androidx.camera:camera-lifecycle:$camerax_version"
+    cameraView                  = "androidx.camera:camera-view:$camerax_version"
+    cameraExtensions            = "androidx.camera:camera-extensions:$camerax_version"
+
+    /** Glide */
+    glide                       = "com.github.bumptech.glide:glide:$glide_version"
+    glideImplementation         = "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+    glideKapt                   = "com.github.bumptech.glide:compiler:$glide_version"
+
+    /** Firebase */
+    firebaseAnalytics           = "com.google.firebase:firebase-analytics-ktx"
+    firebaseCrashlytics         = "com.google.firebase:firebase-crashlytics-ktx"
+    firebaseMessaging           = "com.google.firebase:firebase-messaging-ktx:23.0.7"
+    firebaseBasement            = "com.google.android.gms:play-services-basement:18.1.0"
+
+    /** Photo Compressor */
+    compressor                 = "id.zelory:compressor:$compressor"
+
+    /** Testing **/
+    mockk                      = "io.mockk:mockk:1.12.5"
+    junit                      = "junit:junit:$junit_version"
+    coroutinesTest             = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    coreTesting                = "androidx.arch.core:core-testing:2.1.0"
+    turbine                    = "app.cash.turbine:turbine:0.9.0"
+}

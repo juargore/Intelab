@@ -1,0 +1,163 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.huawei.agconnect'
+}
+
+android {
+    compileSdk rootProject.ext.targetSdkVersion
+
+    defaultConfig {
+        // Keystore password: Joblab2022
+        // KeyAlias: key0
+        applicationId "com.intelab.joblab"
+        multiDexEnabled true
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+
+        versionName versNamePROD as String
+        versionCode versCodePROD as Integer
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // value to define app name for each build type
+            resValue "string", "app_name", "@string/app_name_release"
+            //buildConfigField "String", "BASE_URL", '"https://joblab.com.mx/joblab/api/"'
+            buildConfigField "String", "BASE_URL", '"https://joblab.app/joblab/api/"'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ".test"
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // value to define app name for each build type
+            resValue "string", "app_name", "@string/app_name_dev"
+            buildConfigField "String", "BASE_URL", '"https://plataformaqa.intelab.com.mx/joblab/api/"'
+        }
+        applicationVariants.all { variant ->
+            // override the current version code for DEV application
+            if (variant.name == 'debug') {
+                variant.outputs.each { output ->
+                    output.versionCodeOverride = versCodeDEV as Integer
+                    output.versionNameOverride = versNameDEV as String
+                }
+            }
+            // For testing purposes, custom apk file name with timestamp
+            def formattedDate = new Date().format('dd-MM-yyyy_HH-mm')
+            variant.outputs.each {
+                output ->
+                    def name = "client(${variant.name})_${formattedDate}.apk"
+                    output.outputFileName = name
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = rootProject.ext.jvm_target
+    }
+    lintOptions {
+        abortOnError false
+        ignoreWarnings false
+        warningsAsErrors false
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Android navigation
+    implementation androidNavFragment
+    implementation androidNavUI
+
+    // Android lifecycle
+    implementation androidLifecycleViewModel
+    implementation androidLifecycleRuntime
+
+    // AndroidX
+    implementation androidAppCompat
+    implementation androidCore
+    implementation androidAnnotation
+    implementation androidConstraintLayout
+    implementation androidLifecycleExtension
+    implementation androidMaterial
+    implementation flexbox
+    implementation viewpager2
+
+    // Retrofit
+    implementation retrofit
+    implementation retrofitGson
+    implementation retrofitInterceptor
+
+    // Dagger Hilt
+    implementation daggerHilt
+    kapt daggerHiltKapt
+
+    // Room DataBase
+    implementation roomRuntime
+    kapt roomKapt
+    implementation roomKtx
+    implementation roomRxJava
+
+    // CameraX
+    implementation cameraCore
+    implementation camera
+    implementation cameraLifecycle
+    implementation cameraView
+    implementation cameraExtensions
+
+    // Glide
+    implementation glide
+    implementation glideImplementation
+    kapt glideKapt
+
+    // Firebase
+    implementation platform("com.google.firebase:firebase-bom:30.3.1")
+    implementation firebaseMessaging
+    implementation firebaseBasement
+    implementation firebaseAnalytics
+    implementation firebaseCrashlytics
+
+    // Photo Compression
+    implementation compressor
+
+    implementation 'com.huawei.agconnect:agconnect-core:1.6.5.300'
+    implementation 'com.huawei.hms:push:6.5.0.300'
+
+    // Testing
+    implementation mockk
+    implementation coroutinesTest
+    implementation coreTesting
+    implementation turbine
+    implementation junit
+}

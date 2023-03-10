@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/accutest_navigation"
+    app:startDestination="@id/accutestTrainFragment">
+
+    <fragment
+        android:id="@+id/accutestTrainFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.accutest.fragment.AccutestTrainFragment"
+        android:label="fragment_accutest_train"
+        tools:layout="@layout/fragment_accutest_train">
+        <action
+            android:id="@+id/action_accutestTrainFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+        <action
+            android:id="@+id/action_accutestTrainFragment_to_accutestInstructionFragment"
+            app:destination="@id/accutestInstructionFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/accutestInstructionFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.accutest.fragment.AccutestInstructionFragment"
+        android:label="fragment_accutest_instruction"
+        tools:layout="@layout/fragment_accutest_instruction">
+        <action
+            android:id="@+id/action_accutestInstructionFragment_to_accutestStepOneFragment"
+            app:destination="@id/accutestStepOneFragment"
+            app:popUpTo="@id/accutestTrainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accutestStepOneFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.accutest.fragment.AccutestStepOneFragment"
+        android:label="fragment_accutest_step_one"
+        tools:layout="@layout/fragment_accutest_step_one">
+        <action
+            android:id="@+id/action_accutestStepOneFragment_to_accutestStepTwoFragment"
+            app:destination="@id/accutestStepTwoFragment"
+            app:popUpTo="@id/accutestStepOneFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_accutestStepOneFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accutestStepTwoFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.accutest.fragment.AccutestStepTwoFragment"
+        android:label="fragment_accutest_step_two"
+        tools:layout="@layout/fragment_accutest_step_two">
+
+        <argument
+            android:name="answers"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_accutestStepTwoFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_accutestStepTwoFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+
+        <action
+            android:id="@+id/action_accutestStepTwoFragment_to_accutestStepOneFragment"
+            app:destination="@id/accutestStepOneFragment"
+            app:popUpTo="@id/accutestStepTwoFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.accutest.fragment.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video">
+
+        <argument
+            android:name="videoId"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>

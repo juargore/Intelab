@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.AcademicFragment"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.profile.viewmodels.ProfileCreditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_generic_joblab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counter="@{ viewModel.counterScreen }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:screenTitle="@{ R.string.tv_title_profile_edition }"
+            app:showCounter="@{ true }"
+            app:userName="@{ viewModel.userFullName }" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/footer"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/tv_financial_information"
+                    android:textColor="@color/black_800"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_automotive_credit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_automotive_credit"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_credit_yes"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onAutomotiveCreditYesClicked()}"
+                    android:text="@string/tv_yes"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_automotive_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_automotive_credit"
+                    app:parallelogramBackground="@{viewModel.selectedAutomotiveCredit == 1 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_credit_no"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onAutomotiveCreditNoClicked()}"
+                    android:text="@string/tv_no"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_credit_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_automotive_credit"
+                    app:parallelogramBackground="@{viewModel.selectedAutomotiveCredit == 2 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_mortgage_credit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/tv_mortgage_loan"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_automotive_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_credit_yes"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_mortgage_credit_yes"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onMortgageCreditYesClicked()}"
+                    android:text="@string/tv_yes"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_mortgage_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mortgage_credit"
+                    app:parallelogramBackground="@{viewModel.selectedMortgageCredit == 1 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_mortgage_credit_no"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onMortgageCreditNoClicked()}"
+                    android:text="@string/tv_no"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_mortgage_credit_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mortgage_credit"
+                    app:parallelogramBackground="@{viewModel.selectedMortgageCredit == 2 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_credit_card"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_600"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/tv_credit_card"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_automotive_credit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mortgage_credit_yes"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_credit_card_yes"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="11.14dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onCreditCardYesClicked()}"
+                    android:text="@string/tv_yes"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_credit_card"
+                    app:layout_constraintTop_toBottomOf="@id/tv_credit_card"
+                    app:parallelogramBackground="@{viewModel.selectedCreditCard == 1 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@+id/tv_credit_card_no"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onCreditCardNoClicked()}"
+                    android:text="@string/tv_no"
+                    android:textColor="@color/black_800"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_credit_card_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_credit_card"
+                    app:parallelogramBackground="@{viewModel.selectedCreditCard == 2 ? R.color.green_300 : R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <include
+            android:id="@+id/footer"
+            layout="@layout/footer_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:actionNext="@{ viewModel::onNextClicked }"
+            app:actionSaveAndExit="@{ viewModel::onSaveAndExitClicked }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

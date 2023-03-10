@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.init.login.viewmodels.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_init_session_candidate"
+        tools:context=".presentation.ui.init.login.fragment.LoginFragment">
+
+        <View
+            android:id="@+id/vw_trapeze"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trapezeBackground="@{R.color.white}"
+            tools:background="@drawable/vw_shape_trapeze" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="0dp"
+            android:text="@string/tv_title_candidate"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/vw_trapeze"
+            app:layout_constraintEnd_toStartOf="@id/vw_trapeze" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="72dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_logo_candidate"
+            app:layout_constraintBottom_toTopOf="@id/et_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.42"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_email"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="35dp"
+            android:hint="@string/et_hint_user_email"
+            android:importantForAutofill="no"
+            android:inputType="textNoSuggestions|textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:text="@={ viewModel.userName }"
+            android:textColorHint="@color/gray_600"
+            app:layout_constraintBottom_toTopOf="@id/layPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:maxLength="@{256}"
+            app:parallelogramBackground="@{R.color.white}"
+            app:textEmailAddress="@{true}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_password_forgot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_email">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginHorizontal="50dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/et_hint_user_password"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="0dp"
+                    android:text="@={ viewModel.userPassword }"
+                    android:textColorHint="@color/gray_600"
+                    app:parallelogramBackground="@{R.color.gray_100}"
+                    tools:background="@drawable/vw_shape_parallelogram"
+                    tools:ignore="Autofill" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_password_forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="sans-serif"
+            android:gravity="end"
+            android:onClick="@{() -> viewModel.onForgotPasswordClicked()}"
+            android:text="@string/tv_password_forgot"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_email"
+            app:layout_constraintTop_toBottomOf="@id/layPassword" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bn_login"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{ () -> viewModel.onLoginClicked() }"
+            android:padding="1dp"
+            android:text="@string/bn_text_login"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/bn_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_password_forgot"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:parallelogramBackground="@{R.color.gray_600}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bn_register"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bn_ripple_register"
+            android:onClick="@{ () -> viewModel.onRegisterClicked() }"
+            android:text="@string/bn_text_register"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bn_login"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+            tools:layout_editor_absoluteX="95dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

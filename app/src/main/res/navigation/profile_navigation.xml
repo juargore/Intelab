@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_navigation"
+    app:startDestination="@id/profileJobsFragment">
+
+    <fragment
+        android:id="@+id/profileJobsFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileJobsFragment"
+        android:label="fragment_profile_jobs"
+        tools:layout="@layout/fragment_profile_jobs">
+        <action
+            android:id="@+id/action_profile_jobs_to_profile_personal"
+            app:destination="@id/profilePersonalFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePersonalFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfilePersonalFragment"
+        android:label="fragment_profile_personal"
+        tools:layout="@layout/fragment_profile_personal">
+        <action
+            android:id="@+id/action_profile_personal_to_profile_domicile"
+            app:destination="@id/profileDomicileFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileDomicileFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileDomicileFragment"
+        android:label="fragment_profile_domicile"
+        tools:layout="@layout/fragment_profile_domicile">
+        <action
+            android:id="@+id/action_profile_domicile_to_profile_credit"
+            app:destination="@id/profileCreditFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileCreditFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileCreditFragment"
+        android:label="fragment_profile_credit"
+        tools:layout="@layout/fragment_profile_credit">
+        <action
+            android:id="@+id/action_profile_credit_to_profile_lifestyle"
+            app:destination="@id/profileLifestyleFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileLifestyleFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileLifestyleFragment"
+        android:label="fragment_profile_lifestyle"
+        tools:layout="@layout/fragment_profile_lifestyle">
+        <action
+            android:id="@+id/action_profile_lifestyle_to_profile_economic"
+            app:destination="@id/profileEconomicFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEconomicFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileEconomicFragment"
+        android:label="fragment_profile_economic"
+        tools:layout="@layout/fragment_profile_economic">
+        <action
+            android:id="@+id/action_profile_economic_to_profile_academic"
+            app:destination="@id/profileAcademicFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileAcademicFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileAcademicFragment"
+        android:label="fragment_profile_academic"
+        tools:layout="@layout/fragment_profile_academic">
+        <action
+            android:id="@+id/action_profile_academic_to_profile_job_reference"
+            app:destination="@id/profileJobReferenceFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileJobReferenceFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileJobReferenceFragment"
+        android:label="fragment_profile_job_reference"
+        tools:layout="@layout/fragment_profile_job_reference">
+        <action
+            android:id="@+id/action_profile_job_reference_to_profile_add_job_reference"
+            app:destination="@id/profileAddJobReferenceFragment" />
+        <action
+            android:id="@+id/action_profile_job_reference_to_profile_social_media"
+            app:destination="@id/profileSocialMediaFragment"
+            app:popUpTo="@+id/profile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileAddJobReferenceFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileAddJobReferenceFragment"
+        android:label="fragment_profile_add_job_reference"
+        tools:layout="@layout/fragment_profile_add_job_reference">
+        <argument
+            android:name="referenceJobId"
+            app:nullable="false"
+            app:argType="integer" />
+        <argument
+            android:name="selectedJob"
+            app:nullable="false"
+            app:argType="com.intelab.joblab.domain.entities.requests.CandidateWorkExperience" />
+        <argument
+            android:name="listOfCompanies"
+            app:nullable="false"
+            app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSocialMediaFragment"
+        android:name="com.intelab.joblab.presentation.ui.home.profile.fragment.ProfileSocialMediaFragment"
+        android:label="fragment_profile_social_media"
+        tools:layout="@layout/fragment_profile_social_media"/>
+
+</navigation>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.init.splash.fragment.OnBoardingFourthScreenFragment">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.init.splash.viewmodel.OnBoardingFourthScreenViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellow_400">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_check_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/ob_fourth_screen_check_out"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/tv_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/ob_fourth_screen_company"
+                android:textColor="@color/gray_750"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tv_check_out"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/tv_keep_touch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/ob_fourth_screen_keep_touch"
+                android:textColor="@color/gray_750"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tv_company"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="235dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ob_image_screen_fourth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_keep_touch"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:id="@+id/bn_continue"
+                android:layout_width="180dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="30dp"
+                android:onClick="@{ () -> viewModel.onContinueClicked() }"
+                android:padding="1dp"
+                android:text="@string/bn_ob_fouth_screen"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_image"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:parallelogramBackground="@{R.color.gray_600}"
+                tools:background="@drawable/vw_shape_parallelogram" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

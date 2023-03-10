@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="item"
+            type="com.intelab.joblab.presentation.ui.init.register.adapter.items.JobSearchItem" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{item.selected ? R.color.green_300 : R.color.white}"
+        android:onClick="@{() -> item.onClick()}">
+
+        <TextView
+            android:id="@+id/tv_job_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingVertical="8dp"
+            android:paddingStart="36dp"
+            android:paddingEnd="8dp"
+            android:text="@{item.jobUI.jobName}"
+            android:textColor="@color/black_800"
+            tools:text="Directivo" />
+
+    </RelativeLayout>
+
+</layout>

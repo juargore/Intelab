@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.init.register.viewmodels.PersonalInformationValidateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.init.register.fragments.PersonalInformationValidateFragment">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/app_toolbar" />
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/gray_100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="23dp">
+
+                <include
+                    android:id="@+id/vw_register_header"
+                    layout="@layout/header_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:stepNumber="@{@string/tv_empty}"
+                    app:stringId="@{R.string.tv_question_about_info}"
+                    app:text="@{@string/tv_register}" />
+
+                <TextView
+                    android:id="@+id/tv_warning"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="@string/tv_wrong_information_warning"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vw_register_header" />
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:text="@{ viewModel.userFullName }"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_warning"
+                    tools:text="ADRIAN CAMACHO MARTINEZ" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{ viewModel.userEmail }"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name"
+                    tools:text="adrian@intelab.com.mx" />
+
+                <TextView
+                    android:id="@+id/tv_jobs_postulations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="@{viewModel.jobPostulations}"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_email"
+                    tools:text="Administrador de proyectos" />
+
+                <TextView
+                    android:id="@+id/tv_nationality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{viewModel.nationality}"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_jobs_postulations" />
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{ viewModel.userPhone }"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_nationality"
+                    tools:text="5577836503" />
+
+                <TextView
+                    android:id="@+id/tv_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{ viewModel.userCurp }"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_number"
+                    tools:text="CAMA850731HDFMRD01" />
+
+                <Button
+                    android:id="@+id/bn_yes"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onYesClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_yes_finish"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_800"
+                    app:layout_constraintEnd_toStartOf="@+id/bn_no"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_code"
+                    app:parallelogramBackground="@{R.color.green_300}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <Button
+                    android:id="@+id/bn_no"
+                    android:layout_width="95dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="48dp"
+                    android:onClick="@{() -> viewModel.onNoClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/tv_cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bn_yes"
+                    app:layout_constraintTop_toBottomOf="@id/tv_code"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

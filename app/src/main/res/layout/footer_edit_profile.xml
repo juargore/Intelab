@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="com.intelab.joblab.R" />
+
+        <import type="android.view.View" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="actionSaveAndExit"
+            type="Function0&lt;Unit>" />
+
+        <variable
+            name="actionNext"
+            type="Function0&lt;Unit>" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <Button
+            android:id="@+id/btnSaveAndExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:background="@null"
+            android:onClick="@{ () -> actionSaveAndExit.invoke() }"
+            android:text="@string/tv_title_save_and_exit"
+            android:textAllCaps="false"
+            android:textColor="@color/gray_800"
+            android:textSize="16sp"
+            app:underline="@{ true }"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="12dp"
+            android:background="@{ R.color.green_300 }"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:onClick="@{ () -> actionNext.invoke() }"
+            android:paddingVertical="0dp"
+            android:text="@string/bn_text_next"
+            android:textAllCaps="false"
+            android:textColor="@color/gray_800"
+            android:textSize="15sp"
+            app:parallelogramBackground="@{ R.color.green_300 }"
+            tools:background="@drawable/vw_shape_parallelogram"
+            tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
+    </LinearLayout>
+</layout>

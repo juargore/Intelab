@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ui.home.register.fragment.AcademicFragment">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.main.viewmodels.NotificationsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/constraintLayout5"
+            layout="@layout/header_generic_joblab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:action="@{ viewModel::onBackClicked }"
+            app:userName="@{ viewModel.userFullName }"
+            app:screenTitle="@{ R.string.tv_title_notifications }"
+            app:showCounter="@{ false }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.intelab.joblab.presentation.ui.views.recyclers.NotificationRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="@{ viewModel.notificationList.size > 0 ? View.VISIBLE : View.GONE }"
+            app:itemList="@{ viewModel.notificationList }"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:padding="16dp"
+            android:text="@string/tv_message_no_notifications"
+            android:textSize="16sp"
+            android:visibility="@{ viewModel.notificationList.size > 0 ? View.GONE : View.VISIBLE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

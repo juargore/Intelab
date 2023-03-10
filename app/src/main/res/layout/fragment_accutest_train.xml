@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.accutest.fragment.AccutestTrainFragment">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.accutest.viewmodels.AccutestTrainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/app_toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:paddingBottom="70dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@null"
+                    android:onClick="@{() -> viewModel.onChangeClicked()}"
+                    android:src="@drawable/ic_baseline_autorenew_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/tv_title_accutest_training"
+                    android:textColor="@android:color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onVideosClicked()}"
+                    android:text="@string/tv_see_instructions"
+                    android:textColor="#FA9503"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+                <TextView
+                    android:id="@+id/tv_instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/tv_instruction_accutest_training"
+                    android:textColor="@color/gray_700"
+                    app:layout_constraintTop_toBottomOf="@id/tv_link" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="60dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_instructions"
+                    app:spanCount="3"
+                    app:trainingPhrases="@{viewModel.phrases}"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/item_test_card" />
+
+                <TextView
+                    android:id="@+id/tv_instructions_change"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:textColor="@color/gray_700"
+                    app:drawable="@{R.drawable.ic_baseline_autorenew_24}"
+                    app:layout_constraintTop_toBottomOf="@id/rv_test"
+                    app:text="@{@string/tv_instruction_change_image}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> viewModel.onInitTestClicked()}"
+            android:padding="1dp"
+            android:text="@string/bn_init_test"
+            android:textAllCaps="false"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:parallelogramBackground="@{R.color.green_300}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

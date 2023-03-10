@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deep_link_register_authorization">joblab://init-register-authorization</string>
+    <string name="deep_link_activate_account">joblab://activate-account</string>
+    <string name="deep_link_login_screen">joblab://init-login</string>
+    <string name="deep_link_home_screen">joblab://home</string>
+    <string name="deep_link_resumption">joblab://resumption</string>
+</resources>

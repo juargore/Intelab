@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.intelab.joblab.presentation.ui.init.splash.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_home_navigation"
+            app:destination="@id/home_navigation"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.intelab.joblab.presentation.ui.init.splash.fragment.OnBoardingFragment"
+        android:label="OnBoardingFragment">
+        <action
+            android:id="@+id/action_onBoardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.intelab.joblab.presentation.ui.init.login.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_createAccountFragment"
+            app:destination="@id/init_register_navigation">
+
+            <argument
+                android:name="email"
+                app:argType="string"
+                app:nullable="false" />
+
+        </action>
+        <action
+            android:id="@+id/action_loginFragment_to_forget_navigation"
+            app:destination="@id/forget_navigation" />
+        <action
+            android:id="@+id/action_loginFragment_to_activateAccountFragment"
+            app:destination="@id/activateAccountFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_home_navigation"
+            app:destination="@id/home_navigation"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <deepLink app:uri="joblab://init-login" />
+    </fragment>
+
+    <include app:graph="@navigation/home_navigation" />
+
+    <include app:graph="@navigation/init_register_navigation" />
+
+    <navigation
+        android:id="@+id/forget_navigation"
+        app:startDestination="@id/forgetPasswordFragment">
+
+        <fragment
+            android:id="@+id/forgetPasswordFragment"
+            android:name="com.intelab.joblab.presentation.ui.init.forget.fragment.ForgetPasswordFragment"
+            android:label="fragment_forget_password"
+            tools:layout="@layout/fragment_forget_password">
+            <action
+                android:id="@+id/action_forgetPasswordFragment_to_verificationCodeFragment"
+                app:destination="@id/verificationCodeFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/verificationCodeFragment"
+            android:name="com.intelab.joblab.presentation.ui.init.forget.fragment.VerificationCodeFragment"
+            android:label="fragment_verification_code"
+            tools:layout="@layout/fragment_verification_code">
+            <action
+                android:id="@+id/action_verificationCodeFragment_to_recoverPasswordFragment"
+                app:destination="@id/recoverPasswordFragment" />
+
+        </fragment>
+        <fragment
+            android:id="@+id/recoverPasswordFragment"
+            android:name="com.intelab.joblab.presentation.ui.init.forget.fragment.RecoverPasswordFragment"
+            android:label="fragment_recover_password"
+            tools:layout="@layout/fragment_recover_password">
+
+            <argument
+                android:name="validationCode"
+                android:defaultValue="@null"
+                app:argType="string"
+                app:nullable="true" />
+
+            <action
+                android:id="@+id/action_recoverPasswordFragmentto_loginFragment"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@id/loginFragment"
+                app:popUpToInclusive="true" />
+
+        </fragment>
+
+    </navigation>
+
+</navigation>

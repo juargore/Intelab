@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.LifeStylePartTwoFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.LifeStylePartTwoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_life_style"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/header_progress_registration"
+            layout="@layout/header_progress_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:advance="@{ viewModel.advance }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layHeader" />
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bn_back"
+            app:layout_constraintTop_toBottomOf="@id/header_progress_registration">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <TextView
+                    android:id="@+id/tv_choose_services"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_choose_services"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/hs_service"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_choose_services"
+                    app:layout_constraintTop_toBottomOf="@id/tv_choose_services">
+
+                    <TextView
+                        android:id="@+id/tv_water_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onWaterClicked()}"
+                        android:text="@string/tv_water_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedWater.id == 1 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                    <TextView
+                        android:id="@+id/tv_light_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onLightClicked()}"
+                        android:text="@string/tv_light_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedLight.id == 2 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onPhoneClicked()}"
+                        android:text="@string/tv_phone_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedPhone.id == 3 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                    <TextView
+                        android:id="@+id/tv_tv_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onTvClicked()}"
+                        android:text="@string/tv_tv_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedTv.id == 4 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                    <TextView
+                        android:id="@+id/tv_gas_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onGasClicked()}"
+                        android:text="@string/tv_gas_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedGas.id == 5 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                    <TextView
+                        android:id="@+id/tv_internet_service"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11.14dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.onInternetClicked()}"
+                        android:text="@string/tv_internet_service"
+                        android:textColor="@color/black_800"
+                        android:textSize="18sp"
+                        app:parallelogramBackground="@{viewModel.selectedInternet.id == 6 ? R.color.green_300 : R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+                <TextView
+                    android:id="@+id/tv_choose_transfer_form"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/gray_600"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_choose_transfer_form"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_choose_services"
+                    app:layout_constraintTop_toBottomOf="@id/hs_service"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze"
+                    tools:ignore="RtlSymmetry" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_transportation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:choices="@{viewModel.transportations}"
+                    app:currentPosition="@={viewModel.transportationPosition}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_choose_transfer_form"
+                    app:layout_constraintTop_toBottomOf="@id/tv_choose_transfer_form" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/bn_back"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onBackClicked() }"
+            android:padding="1dp"
+            android:text="@string/bn_back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bn_next"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:parallelogramBackground="@{R.color.gray_600}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+        <Button
+            android:id="@+id/bn_next"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onNextClicked() }"
+            android:padding="1dp"
+            android:text="@string/bn_text_next"
+            android:textAllCaps="false"
+            android:textColor="@color/black_800"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn_back"
+            app:parallelogramBackground="@{R.color.green_300}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

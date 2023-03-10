@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.AcademicFragment"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.profile.viewmodels.ProfileDomicileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_generic_joblab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counter="@{ viewModel.counterScreen }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:screenTitle="@{ R.string.tv_title_profile_edition }"
+            app:showCounter="@{ true }"
+            app:userName="@{ viewModel.userFullName }" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/footer"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/tv_localization"
+                    android:textColor="@color/black_800"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_postal_code"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_cp"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingHorizontal="15dp"
+                    android:paddingEnd="10dp"
+                    android:text="@={viewModel.cp}"
+                    android:textColorHint="@color/black_800"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_cp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:layout_constraintTop_toTopOf="@id/tv_cp"
+                    app:maxFieldLength="@{5}" />
+
+                <TextView
+                    android:id="@+id/tv_cp"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_cp"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_colony"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_colonia"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="15dp"
+                    android:text="@={viewModel.colony}"
+                    android:textColorHint="@color/black_800"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_colony"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_colony"
+                    app:layout_constraintTop_toTopOf="@id/tv_colony"
+                    app:maxLength="@{80}"
+                    app:specialCharacters="@{true}" />
+
+                <TextView
+                    android:id="@+id/tv_colony"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_colonia"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_cp"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_mcpio"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_mcpio"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="15dp"
+                    android:text="@={viewModel.mcpio}"
+                    android:textColorHint="@color/black_800"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_mcpio"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_mcpio"
+                    app:layout_constraintTop_toTopOf="@id/tv_mcpio"
+                    app:maxLength="@{80}"
+                    app:specialCharacters="@{true}" />
+
+                <TextView
+                    android:id="@+id/tv_mcpio"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_mcpio"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_colony"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <com.intelab.joblab.presentation.ui.views.CustomSpinner
+                    android:id="@+id/sp_state"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:paddingStart="15dp"
+                    app:entries="@{viewModel.statesList}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_state"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_state"
+                    app:layout_constraintTop_toTopOf="@id/tv_state"
+                    app:selectedValue="@={viewModel.selectedState}" />
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_state"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mcpio"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_street"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_calle"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="15dp"
+                    android:text="@={viewModel.street}"
+                    android:textColorHint="@color/black_800"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_street"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_street"
+                    app:layout_constraintTop_toTopOf="@id/tv_street"
+                    app:maxLength="@{150}"
+                    app:specialCharacters="@{true}" />
+
+                <TextView
+                    android:id="@+id/tv_street"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_calle"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_state"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_ext"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_ext"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="15dp"
+                    android:paddingEnd="10dp"
+                    android:text="@={viewModel.noExt}"
+                    android:textColorHint="@color/black_800"
+                    app:alphanumericDash="@{true}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_ext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_ext"
+                    app:layout_constraintTop_toTopOf="@id/tv_ext"
+                    app:maxLength="@{25}" />
+
+                <TextView
+                    android:id="@+id/tv_ext"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_ext"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_street"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_int"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:hint="@string/et_int"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="10dp"
+                    android:text="@={viewModel.noInt}"
+                    android:textColorHint="@color/black_800"
+                    app:alphanumericDash="@{true}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_int"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_int"
+                    app:layout_constraintTop_toTopOf="@id/tv_int"
+                    app:maxLength="@{25}" />
+
+                <TextView
+                    android:id="@+id/tv_int"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_int"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_cp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ext"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <include
+            android:id="@+id/footer"
+            layout="@layout/footer_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:actionNext="@{ viewModel::onNextClicked }"
+            app:actionSaveAndExit="@{ viewModel::onSaveAndExitClicked }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

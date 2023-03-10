@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.AcademicFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.main.viewmodels.TabWeaknessesViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_100">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/tab_title_weaknesses"
+                android:textAllCaps="true"
+                android:textColor="@color/black_800"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:text="@string/tv_weaknesses_description"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <include
+                android:id="@+id/vw_skill_meter"
+                layout="@layout/vw_skill_meter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+            <TextView
+                android:id="@+id/tv_weaknesses_no_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/tv_message_weaknesses_no_result"
+                android:visibility="@{viewModel.weaknesses.size() == 0 ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@id/vw_skill_meter" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_weaknesses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="20dp"
+                android:visibility="@{viewModel.weaknesses.size() == 0 ? View.GONE : View.VISIBLE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/vw_skill_meter"
+                app:onClickArrow="@{viewModel.onRecyclerViewArrowClicked}"
+                app:weaknesses="@{viewModel.weaknesses}" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tv_weaknesses_no_result, rv_weaknesses" />
+
+            <include
+                android:id="@+id/bottom_tab_message"
+                layout="@layout/bottom_tab_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                app:answer="@{@string/tv_weaknesses_answer}"
+                app:clickAction="@{viewModel::onArrowClicked}"
+                app:isClose="@{viewModel.answerClosed}"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                app:question="@{@string/tv_weaknesses_question}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

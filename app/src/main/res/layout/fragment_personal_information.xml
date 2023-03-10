@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.init.register.viewmodels.PersonalInformationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.init.register.ConsentFragment">
+
+        <include
+            android:id="@+id/app_toolbar"
+            layout="@layout/app_toolbar" />
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <include
+                    android:id="@+id/vw_register_header"
+                    layout="@layout/header_register"
+                    app:stepNumber="@{@string/tv_empty}"
+                    app:stringId="@{R.string.tv_input_and_save}"
+                    app:text="@{@string/tv_register}" />
+
+                <include
+                    android:id="@+id/header_register_photo"
+                    layout="@layout/header_register_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:action="@{ viewModel::onPhotoClicked }"
+                    app:email="@{ viewModel.email }"
+                    app:isEnabled="@{ false }"
+                    app:radioChecked="@={ viewModel.radioChecked }"
+                    app:isRadioButtonEnabled="@{true}"
+                    app:layout_constraintTop_toBottomOf="@id/vw_register_header"
+                    app:photoUri="@{ viewModel.userPhotoUri }"
+                    app:title="@{@string/tv_personal_information}" />
+
+                <EditText
+                    android:id="@+id/et_first_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_personal_information_names"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords|textNoSuggestions"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:text="@={viewModel.names}"
+                    android:textColorHint="@color/black_800"
+                    app:alphabetic="@{true}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@id/header_register_photo"
+                    app:layout_constraintTop_toTopOf="@id/tv_name"
+                    app:maxLength="@{80}" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:text="@string/tv_label_names"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header_register_photo"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_last_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_last_name"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:text="@={viewModel.lastName}"
+                    android:textColorHint="@color/black_800"
+                    app:alphabetic="@{true}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_last_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_last_name"
+                    app:layout_constraintTop_toTopOf="@id/tv_last_name"
+                    app:maxLength="@{80}" />
+
+                <TextView
+                    android:id="@+id/tv_last_name"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/tv_personal_information_last_name"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_second_last_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_second_last_name"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:text="@={viewModel.secondLastName}"
+                    android:textColorHint="@color/black_800"
+                    app:alphabetic="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_second_surname"
+                    app:layout_constraintTop_toBottomOf="@id/tv_last_name"
+                    app:maxLength="@{80}" />
+
+                <TextView
+                    android:id="@+id/tv_second_surname"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/tv_personal_information_second_surname"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_last_name"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_phone"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:text="@={viewModel.phone}"
+                    android:textColorHint="@color/black_800"
+                    app:errorMessage="@{ viewModel.errorMessagePhone }"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_phone"
+                    app:layout_constraintTop_toTopOf="@id/tv_phone" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/tv_personal_information_phone"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@id/et_second_last_name"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_passport"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_passport"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="0dp"
+                    android:text="@={viewModel.passport}"
+                    android:textColorHint="@color/black_800"
+                    android:visibility="@{viewModel.showCurpField ? View.GONE : View.VISIBLE}"
+                    app:alphanumeric="@{true}"
+                    app:errorMessage="@{viewModel.errorMessage}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_curp"
+                    app:layout_constraintTop_toTopOf="@id/tv_curp"
+                    app:maxLength="@{25}"
+                    app:minLength="@{1}" />
+
+                <EditText
+                    android:id="@+id/et_curp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_hint_curp"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="0dp"
+                    android:text="@={viewModel.curp}"
+                    android:textColorHint="@color/black_800"
+                    android:visibility="@{viewModel.showCurpField ? View.VISIBLE : View.INVISIBLE}"
+                    app:alphanumeric="@{true}"
+                    app:errorMessage="@{viewModel.errorMessage}"
+                    app:inputFilter="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_curp"
+                    app:layout_constraintTop_toTopOf="@id/tv_curp"
+                    app:maxLength="@{18}" />
+
+                <TextView
+                    android:id="@+id/tv_curp"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/tv_personal_information_curp"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <TextView
+                    android:id="@id/tv_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_link_curp"
+                    android:textSize="8sp"
+                    app:clickable="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_curp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_curp" />
+
+                <Button
+                    android:id="@+id/bn_cancel"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="44dp"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onCancelClicked()}"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toStartOf="@+id/bn_save"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_link"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <Button
+                    android:id="@+id/bn_save"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="44dp"
+                    android:background="@{ viewModel.nextButtonEnabled ? R.color.green_300 : R.color.gray_300 }"
+                    android:enabled="@{ viewModel.nextButtonEnabled }"
+                    android:gravity="center"
+                    android:onClick="@{ () -> viewModel.onSavedClicked() }"
+                    android:padding="1dp"
+                    android:text="@string/bn_text_save"
+                    android:textAllCaps="false"
+                    android:textColor="@{ viewModel.nextButtonEnabled ? R.color.gray_800 : R.color.gray_500 }"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/bn_cancel"
+                    app:layout_constraintTop_toBottomOf="@id/tv_link"
+                    app:parallelogramBackground="@{R.color.green_300}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

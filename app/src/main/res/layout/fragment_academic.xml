@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry"
+    tools:context=".presentation.ui.home.register.fragment.AcademicFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.AcademicViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_academic_title"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/header_progress_registration"
+            layout="@layout/header_progress_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:advance="@{ viewModel.advance }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layHeader" />
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_progress_registration">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <com.intelab.joblab.presentation.ui.views.CustomSpinner
+                    android:id="@+id/et_company_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-23dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:paddingHorizontal="15dp"
+                    android:paddingStart="23dp"
+                    android:paddingEnd="0dp"
+                    app:entries="@{viewModel.educationLevelsList}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@id/tv_academic_grade"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:selectedValue="@={viewModel.educationLevel}" />
+
+                <TextView
+                    android:id="@+id/tv_academic_grade"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_academic_grade"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_company_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/et_company_name"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <com.intelab.joblab.presentation.ui.views.CustomSpinner
+                    android:id="@+id/sp_status"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@drawable/et_shape_register_rectangle"
+                    android:paddingHorizontal="15dp"
+                    app:entries="@{viewModel.educationStatusList}"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_state"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_state"
+                    app:layout_constraintTop_toTopOf="@id/tv_state"
+                    app:selectedValue="@={viewModel.educationStatus}" />
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_state"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_academic_grade"
+                    app:layout_constraintTop_toBottomOf="@id/tv_academic_grade"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <EditText
+                    android:id="@+id/et_institution"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/tv_institution_short_name"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@={viewModel.institution}"
+                    android:textColorHint="@color/black_800"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_institution"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_institution"
+                    app:layout_constraintTop_toTopOf="@id/tv_institution"
+                    app:maxLength="@{80}"
+                    app:specialCharacters="@{true}" />
+
+                <TextView
+                    android:id="@+id/tv_institution"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_institution"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_academic_grade"
+                    app:layout_constraintTop_toBottomOf="@id/tv_state"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@id/hs_profession"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_academic_grade"
+                    app:layout_constraintTop_toBottomOf="@id/tv_institution">
+
+                    <EditText
+                        android:id="@+id/et_profession"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="-13dp"
+                        android:background="@color/gray_100"
+                        android:hint="@string/tv_profession_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.profesion}"
+                        android:textColorHint="@color/black_800"
+                        app:alphabetic="@{true}"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_profession"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_profession"
+                        app:layout_constraintTop_toTopOf="@id/tv_profession"
+                        app:maxLength="@{80}" />
+
+                    <TextView
+                        android:id="@+id/tv_profession"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingStart="15dp"
+                        android:text="@string/tv_profession"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:parallelogramBackground="@{R.color.gray_600}"
+                        tools:background="@drawable/vw_shape_parallelogram" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/et_professional_id"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="-11.14dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_100"
+                    android:hint="@string/et_professional_id_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@={viewModel.professionId}"
+                    android:textColorHint="@color/black_800"
+                    app:errorMessage="@{viewModel.errorMessage}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_professional_id"
+                    app:layout_constraintTop_toBottomOf="@id/hs_profession"
+                    app:maxFieldLength="@{8}" />
+
+                <TextView
+                    android:id="@+id/tv_professional_id"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="@string/tv_professional_id"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/tv_academic_grade"
+                    app:layout_constraintTop_toTopOf="@id/et_professional_id"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/bn_back"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onBackClicked() }"
+            android:padding="1dp"
+            android:text="@string/bn_back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bn_next"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:parallelogramBackground="@{R.color.gray_600}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+        <Button
+            android:id="@+id/bn_next"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@{viewModel.nextBnEnabled ? R.color.green_300 : R.color.gray_300}"
+            android:enabled="@{viewModel.nextBnEnabled}"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onNextClicked() }"
+            android:padding="1dp"
+            android:text="@string/bn_text_next"
+            android:textAllCaps="false"
+            android:textColor="@{viewModel.nextBnEnabled ? R.color.gray_800 : R.color.gray_500}"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn_back"
+            tools:background="@drawable/vw_shape_parallelogram" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

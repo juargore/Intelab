@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.intelab.joblab.R" />
+
+        <import type="android.view.View" />
+
+        <import type="kotlin.Unit" />
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <variable
+            name="clickAction"
+            type="Function1&lt;View, Unit>" />
+
+        <variable
+            name="isClose"
+            type="Boolean" />
+
+        <variable
+            name="question"
+            type="String" />
+
+        <variable
+            name="answer"
+            type="String" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp">
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{question}"
+                android:textColor="@color/black_800"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/iv_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/tv_to_improve_question" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:onClick="@{() -> clickAction.invoke(ivArrow)}"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_question" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@{answer}"
+                android:visibility="@{isClose ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/tv_question"
+                tools:text="@string/tv_strength_answer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

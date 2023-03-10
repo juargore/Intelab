@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.ui.home.register.fragment.SocialMediaFragment">
+
+    <data>
+        <import type="com.intelab.joblab.R" />
+        <variable
+            name="viewModel"
+            type="com.intelab.joblab.presentation.ui.home.register.viewmodels.SocialMediaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layHeader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/green_300"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_social_media"
+                android:textColor="@color/black_800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/sv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bn_back"
+            app:layout_constraintTop_toBottomOf="@id/layHeader">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="36dp">
+
+                <include
+                    android:id="@+id/header_progress_registration"
+                    layout="@layout/header_progress_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:advance="@{ viewModel.advance }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/cb_social_network"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/green_300"
+                    android:checked="@={viewModel.selectedNoSocialNetwork}"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:scaleX="1.50"
+                    android:scaleY="1.50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header_progress_registration" />
+
+                <TextView
+                    android:id="@+id/tv_not_social_media"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_not_social_media"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/cb_social_network"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cb_social_network"
+                    app:trapezeBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_trapeze" />
+
+                <TextView
+                    android:id="@+id/tv_social_media"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/tv_social_media"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="@id/cb_social_network"
+                    app:layout_constraintTop_toBottomOf="@id/tv_not_social_media"
+                    app:parallelogramBackground="@{R.color.gray_600}"
+                    tools:background="@drawable/vw_shape_parallelogram" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hv_social_media"
+                    android:layout_width="400dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:fillViewport="true"
+                    app:layout_constraintStart_toStartOf="@id/tv_social_media"
+                    app:layout_constraintTop_toBottomOf="@id/tv_social_media">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_facebook"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_facebook" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_facebook"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.facebookUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_instagram"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/iv_facebook"
+                        app:srcCompat="@drawable/ic_instagram" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_instagram"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.instagramUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_facebook"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_twitter"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/iv_instagram"
+                        app:srcCompat="@drawable/ic_twitter" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_twitter"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.twitterUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_instagram"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_linkedin"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/iv_twitter"
+                        app:srcCompat="@drawable/ic_linkedin" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_linkedin"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.linkedinUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_twitter"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_pinterest"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/iv_linkedin"
+                        app:srcCompat="@drawable/ic_pinterest" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_pinterest"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.pinterestUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_linkedin"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_youtube"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/iv_pinterest"
+                        app:srcCompat="@drawable/ic_youtube" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_youtube"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_facebook_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.youtubeUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_pinterest"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_other"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:enabled="@{!viewModel.selectedNoSocialNetwork}"
+                        android:hint="@string/et_other"
+                        android:importantForAutofill="no"
+                        android:inputType="textWebEmailAddress"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="@={viewModel.otherUsername}"
+                        android:textColorHint="@color/black_800"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_facebook"
+                        app:layout_constraintTop_toBottomOf="@id/et_youtube"
+                        app:maxFieldLength="@{80}"
+                        app:trapezeBackground="@{R.color.gray_100}"
+                        tools:background="@drawable/vw_shape_trapeze" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bn_back"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onBackClicked()}"
+            android:padding="1dp"
+            android:text="@string/bn_back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bn_next"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:parallelogramBackground="@{R.color.gray_600}"
+            tools:background="@drawable/vw_shape_parallelogram" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bn_next"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@{viewModel.nextBnEnabled ? R.color.green_300 : R.color.gray_300}"
+            android:enabled="@{viewModel.nextBnEnabled}"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onNextClicked()}"
+            android:padding="1dp"
+            android:text="@string/bn_text_next"
+            android:textAllCaps="false"
+            android:textColor="@{viewModel.nextBnEnabled ? R.color.gray_800 : R.color.gray_500}"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bn_back"
+            tools:background="@drawable/vw_shape_parallelogram" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
